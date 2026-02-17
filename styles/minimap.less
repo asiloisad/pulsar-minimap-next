@@ -41,28 +41,6 @@ html {
       }
     }
 
-    // ignore absolute mode the minimap is on the left, because
-    // it would conflict with the editor's gutter
-    &.absolute:not(.left) {
-      position: absolute;
-      right: 0;
-
-      &.adjust-absolute-height {
-        pointer-events: none;
-
-        canvas,
-        .minimap-visible-area {
-          contain: @contain_except_size;
-          pointer-events: auto;
-        }
-      }
-
-      .open-minimap-quick-settings {
-        contain: @contain_all;
-        right: 16px;
-      }
-    }
-
     canvas {
       contain: @contain_except_size;
       position: absolute;

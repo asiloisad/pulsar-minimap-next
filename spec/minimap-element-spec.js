@@ -1717,62 +1717,6 @@ describe("MinimapElement", () => {
       })
     })
 
-    describe("when minimap.absoluteMode setting is true", () => {
-      beforeEach(() => {
-        atom.config.set("minimap.absoluteMode", true)
-      })
-
-      it("adds a absolute class to the minimap element", () => {
-        expect(minimapElement.classList.contains("absolute")).toBeTruthy()
-      })
-
-      describe("when minimap.displayMinimapOnLeft setting is true", () => {
-        it("also adds a left class to the minimap element", () => {
-          atom.config.set("minimap.displayMinimapOnLeft", true)
-          expect(minimapElement.classList.contains("absolute")).toBeTruthy()
-          expect(minimapElement.classList.contains("left")).toBeTruthy()
-        })
-      })
-
-      describe("when minimap.adjustAbsoluteModeHeight setting is true", () => {
-        beforeEach(() => {
-          atom.config.set("minimap.adjustAbsoluteModeHeight", true)
-        })
-        describe("when the content of the minimap is smaller that the editor height", () => {
-          beforeEach(() => {
-            editor.setText(smallSample)
-            resizeEditor(400)
-            minimapElement.measureHeightAndWidth()
-
-            waitsFor("a new animation frame request", () => {
-              return nextAnimationFrame !== noAnimationFrame
-            })
-
-            runs(() => nextAnimationFrame())
-          })
-          it("adjusts the canvas height to the minimap height", () => {
-            expect(minimapElement.querySelector("canvas").offsetHeight).toEqual(minimap.getHeight())
-          })
-
-          describe("when the content is modified", () => {
-            beforeEach(() => {
-              editor.insertText("foo\n\nbar\n")
-
-              waitsFor("a new animation frame request", () => {
-                return nextAnimationFrame !== noAnimationFrame
-              })
-
-              runs(() => nextAnimationFrame())
-            })
-
-            it("adjusts the canvas height to the new minimap height", () => {
-              expect(minimapElement.querySelector("canvas").offsetHeight).toEqual(minimap.getHeight())
-            })
-          })
-        })
-      })
-    })
-
     describe("when the smoothScrolling setting is disabled", () => {
       beforeEach(() => {
         atom.config.set("minimap.smoothScrolling", false)
@@ -1981,18 +1925,6 @@ describe("MinimapElement", () => {
           })
         })
 
-        describe("clicking on the absolute mode item", () => {
-          beforeEach(() => {
-            const item = quickSettingsElement.querySelector("li.absolute-mode")
-            mousedown(item)
-          })
-
-          it("toggles the absolute-mode setting", () => {
-            expect(atom.config.get("minimap.absoluteMode")).toBeTruthy()
-            expect(minimapElement.absoluteMode).toBeTruthy()
-          })
-        })
-
         describe("clicking on the on left button", () => {
           beforeEach(() => {
             const item = quickSettingsElement.querySelector(".btn:first-child")
@@ -2161,36 +2093,6 @@ describe("MinimapElement", () => {
             })
           })
 
-          describe("on the absolute mode item", () => {
-            let [initial] = []
-            beforeEach(() => {
-              initial = atom.config.get("minimap.absoluteMode")
-              atom.commands.dispatch(quickSettingsElement, "core:move-down")
-              atom.commands.dispatch(quickSettingsElement, "core:move-down")
-              atom.commands.dispatch(quickSettingsElement, "core:move-down")
-              atom.commands.dispatch(quickSettingsElement, "core:confirm")
-            })
-
-            it("toggles the code highlights on the minimap element", () => {
-              expect(atom.config.get("minimap.absoluteMode")).toEqual(!initial)
-            })
-          })
-
-          describe("on the adjust absolute mode height item", () => {
-            let [initial] = []
-            beforeEach(() => {
-              initial = atom.config.get("minimap.adjustAbsoluteModeHeight")
-              atom.commands.dispatch(quickSettingsElement, "core:move-down")
-              atom.commands.dispatch(quickSettingsElement, "core:move-down")
-              atom.commands.dispatch(quickSettingsElement, "core:move-down")
-              atom.commands.dispatch(quickSettingsElement, "core:move-down")
-              atom.commands.dispatch(quickSettingsElement, "core:confirm")
-            })
-
-            it("toggles the code highlights on the minimap element", () => {
-              expect(atom.config.get("minimap.adjustAbsoluteModeHeight")).toEqual(!initial)
-            })
-          })
         })
 
         describe("core:move-down", () => {
