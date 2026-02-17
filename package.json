@@ -1,8 +1,8 @@
 {
-  "name": "minimap",
+  "name": "minimap-next",
   "version": "4.40.1",
   "description": "A preview of the full source code.",
-  "repository": "https://github.com/atom-minimap/minimap",
+  "repository": "https://github.com/asiloisad/pulsar-minimap-next",
   "license": "MIT",
   "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
   "main": "./lib/main.js",
@@ -119,7 +119,7 @@
     "core:loaded-shell-environment"
   ],
   "providedServices": {
-    "minimap": {
+    "minimap-next": {
       "description": "Exposes the minimap API to other packages",
       "versions": {
         "1.0.0": "provideMinimapServiceV1"
