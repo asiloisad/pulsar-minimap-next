@@ -91,18 +91,6 @@
     "default": true,
     "order": 22
   },
-  "scrollAnimation": {
-    "type": "boolean",
-    "default": false,
-    "description": "Enables animations when scrolling by clicking on the minimap.",
-    "order": 23
-  },
-  "scrollAnimationDuration": {
-    "type": "integer",
-    "default": 300,
-    "description": "The duration of scrolling animations when clicking on the minimap.",
-    "order": 24
-  },
   "maxTokensInOneLine": {
     "type": "integer",
     "default": 160,
