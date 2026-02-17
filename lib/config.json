@@ -38,12 +38,6 @@
     "description": "If this option and `adjustMinimapWidthToSoftWrap` are enabled the minimap width will never go past the limit sets by CSS. On the other hand, when disabled the minimap will expand to honor the preferred line width.",
     "order": 7
   },
-  "ignoreWhitespacesInTokens": {
-    "type": "boolean",
-    "default": false,
-    "description": "When enabled, text editor tokens are rendered as plain blocks, with no regards to the whitespaces they contains.",
-    "order": 8
-  },
   "charWidth": {
     "type": "number",
     "default": 1,
