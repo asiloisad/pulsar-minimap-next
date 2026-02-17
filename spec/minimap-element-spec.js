@@ -76,7 +76,6 @@ describe("MinimapElement", () => {
       atom.config.set("minimap.displayMinimapOnLeft", false)
       atom.config.set("minimap.displayCodeHighlights", false)
       atom.config.set("minimap.displayPluginsControls", false)
-      atom.config.set("minimap.minimapScrollIndicator", false)
       atom.config.set("minimap.adjustMinimapWidthToSoftWrap", false)
       atom.config.set("minimap.smoothScrolling", true)
       atom.config.set("minimap.adjustMinimapWidthOnlyIfSmaller", true)
@@ -1298,15 +1297,6 @@ describe("MinimapElement", () => {
         })
         runs(() => {
           nextAnimationFrame()
-          atom.config.set("minimap.minimapScrollIndicator", true)
-        })
-
-        waitsFor("minimap frame requested", () => {
-          return minimapElement.frameRequested
-        })
-        runs(() => {
-          nextAnimationFrame()
-          expect(minimapElement.querySelector(".minimap-scroll-indicator")).toBeNull()
         })
       })
 
@@ -1329,7 +1319,6 @@ describe("MinimapElement", () => {
       describe("and is changed to be a classical minimap again", () => {
         beforeEach(() => {
           atom.config.set("minimap.displayPluginsControls", true)
-          atom.config.set("minimap.minimapScrollIndicator", true)
 
           minimap.setStandAlone(false)
         })
@@ -1337,7 +1326,6 @@ describe("MinimapElement", () => {
         it("recreates the destroyed elements", () => {
           expect(minimapElement.querySelector(".minimap-controls")).toExist()
           expect(minimapElement.querySelector(".minimap-visible-area")).toExist()
-          expect(minimapElement.querySelector(".minimap-scroll-indicator")).toExist()
           expect(minimapElement.querySelector(".open-minimap-quick-settings")).toExist()
         })
       })
@@ -1660,33 +1648,6 @@ describe("MinimapElement", () => {
         })
       })
 
-      describe("and when minimap.minimapScrollIndicator setting is true", () => {
-        beforeEach(() => {
-          editor.setText(mediumSample)
-          editorElement.setScrollTop(50)
-
-          waitsFor("minimap frame requested", () => {
-            return minimapElement.frameRequested
-          })
-          runs(() => {
-            nextAnimationFrame()
-            atom.config.set("minimap.minimapScrollIndicator", true)
-          })
-
-          waitsFor("minimap frame requested", () => {
-            return minimapElement.frameRequested
-          })
-          runs(() => {
-            nextAnimationFrame()
-          })
-        })
-
-        it("offsets the scroll indicator by the difference", () => {
-          const indicator = minimapElement.querySelector(".minimap-scroll-indicator")
-          expect(realOffsetLeft(indicator)).toBeCloseTo(2, -1)
-        })
-      })
-
       describe("and when minimap.displayPluginsControls setting is true", () => {
         beforeEach(() => {
           atom.config.set("minimap.displayPluginsControls", true)
@@ -1752,97 +1713,6 @@ describe("MinimapElement", () => {
             expect(minimapElement.offsetWidth).toBeCloseTo(16384 * 2)
             expect(minimapElement.style.width).toEqual(`${16384 * 2}px`)
           })
-        })
-      })
-    })
-
-    describe("when minimap.minimapScrollIndicator setting is true", () => {
-      beforeEach(() => {
-        editor.setText(mediumSample)
-        editorElement.setScrollTop(50)
-
-        waitsFor("minimap frame requested", () => {
-          return minimapElement.frameRequested
-        })
-        runs(() => {
-          nextAnimationFrame()
-        })
-
-        atom.config.set("minimap.minimapScrollIndicator", true)
-      })
-
-      it("adds a scroll indicator in the element", () => {
-        expect(minimapElement.querySelector(".minimap-scroll-indicator")).toExist()
-      })
-
-      describe("and then deactivated", () => {
-        it("removes the scroll indicator from the element", () => {
-          atom.config.set("minimap.minimapScrollIndicator", false)
-          expect(minimapElement.querySelector(".minimap-scroll-indicator")).not.toExist()
-        })
-      })
-
-      describe("on update", () => {
-        beforeEach(() => {
-          editorElement.style.height = "500px"
-
-          if (atom.views.performDocumentPoll) {
-            atom.views.performDocumentPoll()
-          }
-
-          waitsFor("a new animation frame request", () => {
-            return nextAnimationFrame !== noAnimationFrame
-          })
-          runs(() => {
-            nextAnimationFrame()
-          })
-        })
-
-        it("adjusts the size and position of the indicator", () => {
-          const indicator = minimapElement.querySelector(".minimap-scroll-indicator")
-
-          const height = editorElement.getHeight() * (editorElement.getHeight() / minimap.getHeight())
-          const scroll = (editorElement.getHeight() - height) * minimap.getTextEditorScrollRatio()
-
-          expect(indicator.offsetHeight).toBeCloseTo(height, 0)
-          expect(realOffsetTop(indicator)).toBeCloseTo(scroll, 0)
-        })
-      })
-
-      describe("when the minimap cannot scroll", () => {
-        beforeEach(() => {
-          editor.setText(smallSample)
-
-          waitsFor("minimap frame requested", () => {
-            return minimapElement.frameRequested
-          })
-          runs(() => {
-            nextAnimationFrame()
-          })
-        })
-
-        it("removes the scroll indicator", () => {
-          expect(minimapElement.querySelector(".minimap-scroll-indicator")).not.toExist()
-        })
-
-        describe("and then can scroll again", () => {
-          beforeEach(() => {
-            editor.setText(largeSample)
-
-            waitsFor("minimap frame requested", () => {
-              return minimapElement.frameRequested
-            })
-            runs(() => {
-              nextAnimationFrame()
-            })
-          })
-
-          // TODO disable failing test, Also see https://github.com/atom-minimap/minimap/issues/717
-          // it('attaches the scroll indicator', () => {
-          //   waitsFor('minimap scroll indicator', () => {
-          //     return minimapElement.querySelector('.minimap-scroll-indicator')
-          //   })
-          // })
         })
       })
     })

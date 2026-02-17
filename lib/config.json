@@ -26,12 +26,6 @@
     "description": "You need to restart Atom for this setting to be effective.",
     "order": 4
   },
-  "minimapScrollIndicator": {
-    "type": "boolean",
-    "default": true,
-    "description": "Toggles the display of a side line showing which part of the buffer is currently displayed by the minimap. This side line will only appear if the minimap is taller than the editor view height.",
-    "order": 5
-  },
   "adjustMinimapWidthToSoftWrap": {
     "type": "boolean",
     "default": true,

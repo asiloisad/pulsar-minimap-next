@@ -22,10 +22,6 @@ const styles = `
     background: rgba(255,0,0,0.3);
   }
 
-  atom-text-editor atom-text-editor-minimap .minimap-scroll-indicator {
-    background: rgba(0,0,255,0.3);
-  }
-
   atom-text-editor atom-text-editor-minimap .minimap-visible-area {
     background: rgba(0,255,0,0.3);
     opacity: 1;
