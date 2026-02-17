@@ -5,20 +5,6 @@
   "repository": "https://github.com/atom-minimap/minimap",
   "license": "MIT",
   "author": "Fangdun Cai <cfddream@gmail.com>, Amin Yahyaabadi <aminyahyaabadi74@gmail.com>",
-  "contributors": [
-    {
-      "name": "Fangdun Cai",
-      "email": "cfddream@gmail.com"
-    },
-    {
-      "name": "Cédric Néhémie",
-      "email": "cedric.nehemie@gmail.com"
-    },
-    {
-      "name": "Amin Yahyaabadi",
-      "email": "aminyahyaabadi74@gmail.com"
-    }
-  ],
   "main": "./lib/main.js",
   "dependencies": {},
   "engines": {
