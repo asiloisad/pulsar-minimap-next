@@ -90,12 +90,6 @@
     "description": "The scrolling speed when the `Independent Minimap Scroll On Mouse Wheel Events` setting is enabled.",
     "order": 15
   },
-  "smoothScrolling": {
-    "type": "boolean",
-    "default": false,
-    "description": "Whether to offset the minimap canvas when scrolling to keep the scroll smooth. When `true` the minimap canvas will be offseted, resulting in a smoother scroll, but with the side-effect of a blurry minimap when the canvas is placed between pixels. When `false` the canvas will always stay at the same position, and will never look blurry, but the scroll will appear more jagged.",
-    "order": 16
-  },
   "redrawDelay": {
     "type": "number",
     "default": 400,
