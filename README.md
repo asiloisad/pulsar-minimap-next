@@ -2,6 +2,8 @@
 
 A preview of the full source code.
 
+Fork of [minimap](https://github.com/atom-minimap/minimap).
+
 ## Features
 
 - **Canvas-based rendering**: Fast and flexible minimap drawn on canvas.
