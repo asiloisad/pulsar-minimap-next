@@ -1,7 +1,7 @@
 {
   "name": "minimap-next",
   "version": "1.0.2",
-  "description": "A preview of the full source code.",
+  "description": "A preview of the full source code",
   "repository": "https://github.com/asiloisad/pulsar-minimap-next",
   "license": "MIT",
   "main": "./lib/main.js",
