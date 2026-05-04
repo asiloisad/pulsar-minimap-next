@@ -11,98 +11,116 @@
       "properties": {}
     },
     "autoToggle": {
-      "title": "Show Minimap On Atom Start",
+      "order": 1,
+      "title": "Show Minimap On Startup",
+      "description": "Automatically show the minimap when Pulsar starts.",
       "type": "boolean",
-      "default": true,
-      "order": 1
+      "default": true
     },
     "displayMinimapOnLeft": {
+      "order": 2,
+      "title": "Display Minimap On Left",
+      "description": "When enabled, the minimap is displayed on the left side of the editor instead of the right.",
       "type": "boolean",
-      "default": false,
-      "order": 2
+      "default": false
     },
     "displayCodeHighlights": {
+      "order": 3,
+      "title": "Display Code Highlights",
+      "description": "Render syntax-colored tokens in the minimap. Disabling this draws plain text and may improve performance.",
       "type": "boolean",
-      "default": true,
-      "description": "Toggles the render of the buffer tokens in the minimap.",
-      "order": 3
+      "default": true
     },
     "displayPluginsControls": {
+      "order": 4,
+      "title": "Display Plugins Controls",
+      "description": "Show the quick-settings button that lets you toggle minimap plugins. Requires a restart to take effect.",
       "type": "boolean",
-      "default": true,
-      "description": "You need to restart Atom for this setting to be effective.",
-      "order": 4
+      "default": true
     },
     "adjustMinimapWidthToSoftWrap": {
+      "order": 6,
+      "title": "Adjust Minimap Width To Soft Wrap",
+      "description": "When soft wrap and soft wrap at preferred line length are both enabled, cap the minimap width to match the preferred line length.",
       "type": "boolean",
-      "default": true,
-      "description": "If this option is enabled and Soft Wrap is checked then the Minimap max width is set to the Preferred Line Length value.",
-      "order": 6
+      "default": true
     },
     "charWidth": {
+      "order": 9,
+      "title": "Character Width",
+      "description": "Width of each character block in the minimap, in pixels.",
       "type": "number",
       "default": 1,
-      "minimum": 0.5,
-      "order": 9
+      "minimum": 0.5
     },
     "charHeight": {
+      "order": 10,
+      "title": "Character Height",
+      "description": "Height of each character block in the minimap, in pixels.",
       "type": "number",
       "default": 2,
-      "minimum": 0.5,
-      "order": 10
+      "minimum": 0.5
     },
     "interline": {
+      "order": 11,
+      "title": "Interline Spacing",
+      "description": "Extra vertical space between lines in the minimap, in pixels.",
       "type": "number",
       "default": 1,
-      "minimum": 0,
-      "description": "The space between lines in the minimap in pixels.",
-      "order": 11
+      "minimum": 0
     },
     "textOpacity": {
+      "order": 12,
+      "title": "Text Opacity",
+      "description": "Opacity of the rendered text in the minimap. Lower values make the code less prominent.",
       "type": "number",
       "default": 0.6,
       "minimum": 0,
-      "maximum": 1,
-      "description": "The opacity used to render the line's text in the minimap.",
-      "order": 12
+      "maximum": 1
     },
     "independentMinimapScroll": {
+      "order": 14,
+      "title": "Independent Minimap Scroll On Mouse Wheel",
+      "description": "When enabled, scrolling the mouse wheel over the minimap moves the minimap independently without scrolling the editor. The minimap still syncs back whenever the editor itself is scrolled.",
       "type": "boolean",
-      "title": "Independent Minimap Scroll On Mouse Wheel Events",
-      "default": false,
-      "description": "When enabled, using the mouse wheel over the Minimap will make it scroll independently of the text editor. The Minimap will still sync with the editor whenever the editor is scrolled, but it will no longer relay the mouse wheel events to the editor.",
-      "order": 14
+      "default": false
     },
     "scrollSensitivity": {
+      "order": 15,
+      "title": "Independent Scroll Sensitivity",
+      "description": "Scroll speed multiplier used when independent minimap scroll is enabled.",
       "type": "number",
-      "default": 0.5,
-      "description": "The scrolling speed when the `Independent Minimap Scroll On Mouse Wheel Events` setting is enabled.",
-      "order": 15
+      "default": 0.5
     },
     "redrawDelay": {
+      "order": 20,
+      "title": "Redraw Delay (ms)",
+      "description": "Minimum time in milliseconds between minimap redraws triggered by text changes. Higher values improve responsiveness on large files; 0 redraws immediately on every change.",
       "type": "number",
       "default": 300,
       "minimum": 0,
-      "maximum": 2000,
-      "description": "Controls how often (in ms) the minimap should redraw itself after changing the text editor's contents. Setting this to 100ms or higher could dramatically improve editor responsiveness when working with large files. A value of 0 will cause the minimap to redraw itself immediately on each change.",
-      "order": 20
+      "maximum": 2000
     },
     "devicePixelRatioRounding": {
+      "order": 21,
+      "title": "Device Pixel Ratio Rounding",
+      "description": "Round the device pixel ratio used for canvas rendering. Disable if you see blurry or misaligned pixels on fractional-DPI displays.",
       "type": "boolean",
-      "default": true,
-      "description": "Toggles the rounding of the devicePixelRatio in the minimap.",
-      "order": 21
+      "default": true
     },
     "useHardwareAcceleration": {
+      "order": 22,
+      "title": "Use Hardware Acceleration",
+      "description": "Use CSS transforms for positioning, which enables GPU compositing and reduces repaints.",
       "type": "boolean",
-      "default": true,
-      "order": 22
+      "default": true
     },
     "maxTokensInOneLine": {
+      "order": 25,
+      "title": "Max Tokens Per Line",
+      "description": "Maximum number of syntax tokens rendered per line. Reducing this can improve performance on files with very long lines.",
       "type": "integer",
-      "default": 160,
-      "description": "The maximum number of tokens that are rendered for each line.",
-      "order": 25
+      "default": 160
     }
   },
   "dependencies": {},
