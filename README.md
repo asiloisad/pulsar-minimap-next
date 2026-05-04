@@ -6,11 +6,14 @@ Fork of [minimap](https://github.com/atom-minimap/minimap).
 
 ## Features
 
-- **Canvas-based rendering**: Fast and flexible minimap drawn on canvas.
-- **Decoration API**: Use the same API to manage `TextEditor` and `Minimap` decorations.
-- **Plugin system**: Extend the minimap with plugins that add markers, highlights, and more.
-- **Stand-alone mode**: Display a minimap preview outside of a text editor for custom UIs.
-- **Quick settings**: Toggle plugins and position directly from a dropdown on the minimap.
+- **Canvas rendering**: Three-layer canvas (back decorations, tokens, front decorations) with incremental redraws — only changed row ranges are repainted.
+- **Syntax highlighting**: Token colors are resolved directly from the active theme via computed DOM styles and cached per scope, so the minimap matches the editor exactly.
+- **Scroll past end**: The minimap proportionally tracks the full editor scroll range, including the scroll-past-end zone.
+- **Decoration API**: Uses the same marker-based API as `TextEditor` — supports `line`, `gutter`, `highlight-under`, `highlight-over`, `highlight-outline`, and `background-custom`/`foreground-custom` types.
+- **Plugin system**: Third-party packages can consume the `minimap-next` service to add their own decoration layers.
+- **Quick settings**: Toggle plugins and flip the minimap position via a dropdown on the minimap itself.
+- **Stand-alone mode**: Embed a minimap preview outside of a text editor for custom UI panels.
+- **Independent scroll**: Optionally decouple mouse-wheel scrolling on the minimap from the editor.
 
 ## Installation
 
