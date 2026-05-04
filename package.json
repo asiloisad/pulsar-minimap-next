@@ -81,7 +81,7 @@
     },
     "redrawDelay": {
       "type": "number",
-      "default": 400,
+      "default": 300,
       "minimum": 0,
       "maximum": 2000,
       "description": "Controls how often (in ms) the minimap should redraw itself after changing the text editor's contents. Setting this to 100ms or higher could dramatically improve editor responsiveness when working with large files. A value of 0 will cause the minimap to redraw itself immediately on each change.",
